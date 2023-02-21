@@ -3,7 +3,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'app_route.dart';
 
-import 'dart:html' as html;
+import 'dart:html';
 
 void main() {
   usePathUrlStrategy();
@@ -43,6 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(seconds: 2), () {
+      window.history.back();
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil("/fieldPage", (route) => false);
+    });
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
@@ -53,11 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Text('$_counter', style: Theme.of(context).textTheme.headline4),
             TextButton(
               onPressed: () {
-                html.window.history.back();
+                window.history.back();
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil("/fieldPage", ((route) => false));
+                    .pushNamedAndRemoveUntil("/fieldPage", (route) => false);
               },
-              child: const Text("push"),
+              child: const Text("text push"),
             ),
           ],
         ),
