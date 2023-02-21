@@ -6,7 +6,7 @@ import 'app_route.dart';
 import 'dart:html';
 
 void main() {
-  usePathUrlStrategy();
+  // usePathUrlStrategy();
   runApp(const MyApp());
 }
 
